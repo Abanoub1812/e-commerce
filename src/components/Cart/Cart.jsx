@@ -54,24 +54,25 @@ export default function Cart() {
               Clear Cart
             </button>
           </div>
-          <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+
+
+
+          <table className="table-auto w-full border-collapse border border-gray-200 shadow-md rounded-lg mb-10">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
-                <th scope="col" className="px-16 py-3">
-                  <span className="sr-only">Image</span>
-                </th>
-                <th scope="col" className="px-6 py-3">Product</th>
-                <th scope="col" className="px-6 py-3">Qty</th>
-                <th scope="col" className="px-6 py-3">Unit Price</th>
-                <th scope="col" className="px-6 py-3">Total Price</th>
-                <th scope="col" className="px-6 py-3">Action</th>
+                <th scope="col" className="border p-2">Image</th>
+                <th scope="col" className="border p-2">Product</th>
+                <th scope="col" className="border p-2">Qty</th>
+                <th scope="col" className="border p-2">Unit Price</th>
+                <th scope="col" className="border p-2">Total Price</th>
+                <th scope="col" className="border p-2">Action</th>
               </tr>
             </thead>
             <tbody>
               {cartItems.map((item) => (
                 <tr key={item.product.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
                   <td className="p-4">
-                    <img src={item.product.imageCover} className="w-16 md:w-32 max-w-full max-h-full" alt={item.product.title} />
+                    <img src={item.product.imageCover} className="w-40 h-auto" alt={item.product.title} />
                   </td>
                   <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                     {item.product.title}
@@ -103,7 +104,7 @@ export default function Cart() {
               <tr className="bg-white border-b text-center font-extrabold text-black text-xl dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td>Total Price</td>
                 <td colSpan="4">{totalCartPrice} EGP</td>
-                <td className="p-4">
+                <td className="p-5">
                   <button
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                     className="text-white bg-main focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
@@ -115,7 +116,7 @@ export default function Cart() {
                     </svg>
                   </button>
                   {isDropdownOpen && (
-                    <div className="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44">
+                    <div className="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-100">
                       <ul className="py-2 text-sm text-black font-extrabold">
                         <li>
                           <NavLink to="/checkout" state={{ type: "online Payment" }} className="block px-4 py-2 hover:bg-gray-100">
@@ -134,6 +135,10 @@ export default function Cart() {
               </tr>
             </tbody>
           </table>
+
+          
+
+
         </div>
       )}
     </>

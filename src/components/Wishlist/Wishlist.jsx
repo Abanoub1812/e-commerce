@@ -1,3 +1,5 @@
+// src/components/Wishlist.js
+
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import Loader from '../loader/Loader';
@@ -13,6 +15,7 @@ export default function Wishlist() {
 
   let { addToCart } = useContext(CartContext);
 
+  // Get Wishlist Items
   async function fetchWishlist() {
     try {
       const response = await axios.get('https://ecommerce.routemisr.com/api/v1/wishlist', {
@@ -28,6 +31,7 @@ export default function Wishlist() {
     }
   }
 
+  // Remove Item from Wishlist
   async function removeFromWishlist(productId) {
     const toastId = toast.loading('Removing from Wishlist...');
     try {
@@ -44,6 +48,7 @@ export default function Wishlist() {
     }
   }
 
+  // Add Product to Cart
   async function addProductToCart(productId) {
     await addToCart(productId);
     removeFromWishlist(productId);
